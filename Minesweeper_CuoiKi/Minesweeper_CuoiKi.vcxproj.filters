@@ -40,5 +40,19 @@
     <Text Include="highscore.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="Display.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Others.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Process.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
