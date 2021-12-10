@@ -46,7 +46,18 @@ xy:
 	}
 	if (chon1.y == 6)
 	{
-		gethighscore();
+		player player3;
+		trochon chon3;
+		khoitaotrochon2(chon3);
+		chon3.y--;
+		while (_getch() != 13)
+		{
+			clrscr();
+			new_game();
+			dieukhientrochon2(player3, chon3);
+		}
+		clrscr();
+		gethighscore(player3);
 	}
 	if (chon1.y != 7)
 	{

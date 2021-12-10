@@ -40,7 +40,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="highscore.txt">
+    <Text Include="highscore1.txt">
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="Display.txt">
@@ -50,6 +50,12 @@
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="Process.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="highscore2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="highscore3.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

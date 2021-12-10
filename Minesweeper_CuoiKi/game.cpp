@@ -93,8 +93,7 @@ void new_game1(player& player) {
 			{
 				if (player.DISPLAY_MAP[r][c] == "-" && player.PROCESS_MAP[r][c] == "-")
 				{
-					srand(time(NULL));
-					player.diem += rand() % (50 - 1 + 1) + 1;
+					player.diem += int((player.move * 100) / (player.timet + 0.1) + 5);
 					OPEN_CELL(r, c, player);
 					if (player.move == player.total_move)
 					{
@@ -211,11 +210,11 @@ void new_game2(player& player)
 			{
 				if (player.DISPLAY_MAP[r][c] == "-" && player.PROCESS_MAP[r][c] == "-")
 				{
-					srand(time(NULL));
-					player.diem += rand() % (50 - 1 + 1) + 1;
+					player.diem += int((player.move * 100) / (player.timet + 0.1) + 5);
 					OPEN_CELL(r, c, player);
 					if (player.move == player.total_move)
 					{
+						input_highscore(player);
 						gotoXY(0, 0);
 						cout << "BOMB HAS BEEN DEFUSED, COUNTER TERRORIST WIN :v" << endl;
 						player.gameover = true;
@@ -230,6 +229,7 @@ void new_game2(player& player)
 				}
 				else if (player.DISPLAY_MAP[r][c] == "-" && player.PROCESS_MAP[r][c] == "B")
 				{
+					input_highscore(player);
 					system("cls");
 					player.DISPLAY_MAP[r][c] = "B";
 					gotoXY(0, 2);
@@ -326,16 +326,19 @@ void dieukhientrochon2(player& player, trochon& trochon)
 		player.ROW = 9;
 		player.COL = 9;
 		player.BOMB = 10;
+		player.level = 1;
 	}
 	if (trochon.vitri[trochon.y] == 2) {
 		player.ROW = 16;
 		player.COL = 16;
 		player.BOMB = 40;
+		player.level = 2;
 	}
 	if (trochon.vitri[trochon.y] == 3) {
 		player.ROW = 16;
 		player.COL = 20;
 		player.BOMB = 99;
+		player.level = 3;
 	}
 	gotoXY(trochon.x, trochon.y);
 	cout << "*";
@@ -406,7 +409,18 @@ void input_highscore(player& player)
 {
 	luudiem danhsach[11];
 	ifstream highscore;
-	highscore.open("highscore.txt");
+	if (player.level == 1)
+	{
+		highscore.open("highscore1.txt");
+	}
+	if (player.level == 2)
+	{
+		highscore.open("highscore2.txt");
+	}
+	if (player.level == 3)
+	{
+		highscore.open("highscore3.txt");
+	}
 	for (int i = 0; i < 10; i++)
 	{
 		getline(highscore, danhsach[i].ten, '\n');
@@ -432,7 +446,18 @@ void input_highscore(player& player)
 		}
 	}
 	ofstream fout;
-	fout.open("highscore.txt");
+	if (player.level == 1)
+	{
+		fout.open("highscore1.txt");
+	}
+	if (player.level == 2)
+	{
+		fout.open("highscore2.txt");
+	}
+	if (player.level == 3)
+	{
+		fout.open("highscore3.txt");
+	}
 	for (int i = 0; i < 10; i++)
 	{
 		fout << danhsach[i].ten << endl;
@@ -440,13 +465,24 @@ void input_highscore(player& player)
 	}
 	fout.close();
 }
-void gethighscore()
+void gethighscore(player& player)
 {
 	system("cls");
 	int diem;
 	char str[100];
 	ifstream highscore;
-	highscore.open("highscore.txt");
+	if (player.level == 1)
+	{
+		highscore.open("highscore1.txt");
+	}
+	if (player.level == 2)
+	{
+		highscore.open("highscore2.txt");
+	}
+	if (player.level == 3)
+	{
+		highscore.open("highscore3.txt");
+	}
 	for (int i = 0; i < 10; i++)
 	{
 		cout << "player " << i + 1 << endl;
@@ -472,7 +508,7 @@ void save_game(player& player) {
 			display << player.DISPLAY_MAP[i][j] << endl;
 		}
 	}
-	getother << player.name << endl << player.ROW << endl << player.COL << endl << player.BOMB << endl << player.diem << endl << player.flag << endl << player.total_move << endl << player.move << endl << player.timet << endl << player.gameover;
+	getother << player.name << endl << player.level << endl << player.ROW << endl << player.COL << endl << player.BOMB << endl << player.diem << endl << player.flag << endl << player.total_move << endl << player.move << endl << player.timet << endl << player.gameover;
 	getother.close();
 	process.close();
 	display.close();
@@ -484,7 +520,7 @@ void load_game(player& player) {
 	ifstream display("Display.txt");
 	ifstream getother("Others.txt");
 	getline(getother, player.name, '\n');
-	getother >> player.ROW >> player.COL >> player.BOMB >> player.diem >> player.flag >> player.total_move >> player.move >> player.timet >> player.gameover;
+	getother >> player.level >> player.ROW >> player.COL >> player.BOMB >> player.diem >> player.flag >> player.total_move >> player.move >> player.timet >> player.gameover;
 	player.PROCESS_MAP = vector<vector<string>>(player.ROW, vector<string>(player.COL));
 	player.DISPLAY_MAP = vector<vector<string>>(player.ROW, vector<string>(player.COL));
 	for (int i = 0; i < player.ROW; i++) {

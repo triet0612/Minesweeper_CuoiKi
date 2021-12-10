@@ -26,6 +26,7 @@ struct player
 	vector<vector<string>> DISPLAY_MAP;
 	time_t begin, end;
 	int timet;
+	int level;
 };
 struct trochon
 {
@@ -66,4 +67,4 @@ void save_game(player& player);
 void load_game(player& player);
 //highscore
 void input_highscore(player& player);
-void gethighscore();
+void gethighscore(player& player);
