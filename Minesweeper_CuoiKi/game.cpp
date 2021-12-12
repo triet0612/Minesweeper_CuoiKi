@@ -98,6 +98,8 @@ void new_game1(player& player) {
 					if (player.move == player.total_move)
 					{
 						input_highscore(player);
+						system("cls");
+						PRINT_MAP(player);
 						gotoXY(0, 0);
 						cout << "BOMB HAS BEEN DEFUSED, COUNTER TERRORIST WIN :v" << endl;
 						player.gameover = true;
@@ -106,7 +108,7 @@ void new_game1(player& player) {
 						gotoXY(55, 1);
 						cout << "Thoi gian choi: " << player.timet;
 						gotoXY(55, 2);
-						cout << "Diem: " << player.diem;
+						cout << "Diem: " << player.diem << " ";
 						system("pause");
 					}
 				}
@@ -116,7 +118,7 @@ void new_game1(player& player) {
 					system("cls");
 					player.DISPLAY_MAP[r][c] = "B";
 					gotoXY(0, 2);
-					PRINT_MAP(player);
+					PRINT_ANS_MAP(player);
 					player.gameover = true;
 					gotoXY(0, 0);
 					cout << "TERRORIST WIN!!! BOOOM" << endl;
@@ -125,7 +127,7 @@ void new_game1(player& player) {
 					gotoXY(55, 1);
 					cout << "Thoi gian choi: " << player.timet;
 					gotoXY(55, 2);
-					cout << "Diem: " << player.diem;
+					cout << "Diem: " << player.diem << " ";
 					system("pause");
 				}
 				else
@@ -215,6 +217,8 @@ void new_game2(player& player)
 					if (player.move == player.total_move)
 					{
 						input_highscore(player);
+						system("cls");
+						PRINT_MAP(player);
 						gotoXY(0, 0);
 						cout << "BOMB HAS BEEN DEFUSED, COUNTER TERRORIST WIN :v" << endl;
 						player.gameover = true;
@@ -223,7 +227,7 @@ void new_game2(player& player)
 						gotoXY(55, 1);
 						cout << "Thoi gian choi: " << player.timet;
 						gotoXY(55, 2);
-						cout << "Diem: " << player.diem;
+						cout << "Diem: " << player.diem << " ";
 						system("pause");
 					}
 				}
@@ -233,7 +237,7 @@ void new_game2(player& player)
 					system("cls");
 					player.DISPLAY_MAP[r][c] = "B";
 					gotoXY(0, 2);
-					PRINT_MAP(player);
+					PRINT_ANS_MAP(player);
 					player.gameover = true;
 					gotoXY(0, 0);
 					cout << "TERRORIST WIN!!! BOOOM" << endl;
@@ -242,7 +246,7 @@ void new_game2(player& player)
 					gotoXY(55, 1);
 					cout << "Thoi gian choi: " << player.timet;
 					gotoXY(55, 2);
-					cout << "Diem: " << player.diem;
+					cout << "Diem: " << player.diem << " ";
 					system("pause");
 				}
 				else

@@ -111,6 +111,92 @@ void PRINT_MAP(player& player) {
 	}
 	cout << endl;
 }
+void PRINT_ANS_MAP(player& player) {
+	cout << endl;
+
+	for (int x = 0; x < player.COL; x++)
+	{
+		SetColor(10);
+		if (x <= 9)
+		{
+			cout << "  " << x << "  ";
+		}
+		else
+		{
+			cout << " " << x << "  ";
+		}
+		SetColor(15);
+	}
+	SetBGColor(8);
+	cout << endl;
+	cout << " ";
+	for (int a = 0; a < player.COL; a++)
+	{
+		cout << "     ";
+	}
+	for (int i = 0; i < player.ROW; i++) {
+		cout << endl;
+		SetBGColor(8);
+		cout << " ";
+		for (int j = 0; j < player.COL; j++) {
+			SetColor(9);
+			if (player.PROCESS_MAP[i][j] != "-") {
+				if (player.PROCESS_MAP[i][j] == "0") {
+					cout << "     ";
+				}
+				else if (player.PROCESS_MAP[i][j] == "F") {
+					SetColor(4);
+					SetBGColor(15);
+					cout << " " << player.PROCESS_MAP[i][j] << " ";
+					SetBGColor(8);
+					cout << "  ";
+				}
+				else {
+					SetColor(0);
+					SetBGColor(15);
+					cout << " " << player.PROCESS_MAP[i][j] << " ";
+					SetBGColor(8);
+					cout << "  ";
+				}
+			}
+			else {
+				SetBGColor(15);
+				SetColor(15);
+				cout << " " << "#" << " ";
+				SetBGColor(8);
+				cout << "  ";
+			}
+			SetColor(15);
+		}
+		SetBGColor(0);
+		SetColor(10);
+		cout << " " << i;
+		SetColor(15);
+		cout << endl;
+		SetBGColor(8);
+		cout << " ";
+		for (int a = 0; a < player.COL; a++)
+		{
+			cout << "     ";
+		}
+		SetBGColor(0);
+	}
+	cout << endl;
+	for (int x = 0; x < player.COL; x++)
+	{
+		SetColor(10);
+		if (x <= 9)
+		{
+			cout << "  " << x << "  ";
+		}
+		else
+		{
+			cout << " " << x << "  ";
+		}
+		SetColor(15);
+	}
+	cout << endl;
+}
 bool CHECK_CELL(int R, int C, player& player) {
 	return (R >= 0) && (R < player.ROW) && (C >= 0) && (C < player.COL);
 }

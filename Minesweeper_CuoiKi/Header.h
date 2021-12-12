@@ -57,6 +57,7 @@ void manHinh1();
 void MAP_GEN(player& player);
 void PLANT_BOMB(player& player);
 void PRINT_MAP(player& player);
+void PRINT_ANS_MAP(player& player);
 bool CHECK_CELL(int R, int C, player& player);
 bool CHECK_BOMB(int R, int C, player& player);
 vector<pair<int, int>> SURROUNDING(int r, int c, player& player);
